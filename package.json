@@ -1,22 +1,42 @@
 {
   "name": "gulp-scp3",
-  "version": "0.0.4",
-  "description": "This module is a gulp-task for copy files remotely like scp command on linux.",
-  "main": "index.js",
+  "version": "1.0.0",
+  "description": "Modern TypeScript Gulp plugin for SCP via SSH2 (Node 20+, Gulp 4/5)",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "mocha --require ts-node/register test/client.test.ts --timeout 5000",
+    "prepublishOnly": "npm run build && npm test"
   },
   "keywords": [
-    "gulp-scp3",
-    "node12",
-    "node10",
+    "gulp",
     "scp",
-    "scp3",
     "ssh2",
-    "gulp-scp3"
+    "sftp",
+    "typescript",
+    "deployment"
   ],
   "engines": {
-    "node": ">=10.17.0"
+    "node": ">=20.0.0"
+  },
+  "peerDependencies": {
+    "gulp": "^4.0.0 || ^5.0.0"
+  },
+  "dependencies": {
+    "debug": "^4.4.3",
+    "ssh2": "^1.17.0"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.12",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.7.4",
+    "@types/ssh2": "^1.15.5",
+    "cross-env": "^10.1.0",
+    "gulp": "^5.0.0",
+    "mocha": "^11.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
   },
   "author": {
     "name": "Jhonatan Villanueva",
@@ -27,12 +47,9 @@
     "type": "git",
     "url": "https://github.com/jinvillaz/gulp-scp3.git"
   },
-  "homepage": "https://github.com/jinvillaz/gulp-scp3",
   "license": "MIT",
-  "dependencies": {
-    "async": "~3.1.0",
-    "debug": "~4.1.1",
-    "ssh2": "~0.8.6",
-    "through2": "~3.0.1"
-  }
+  "files": [
+    "lib/**/*",
+    "README.md"
+  ]
 }
