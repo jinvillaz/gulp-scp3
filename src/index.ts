@@ -12,6 +12,15 @@ export interface ScpOptions {
   watch?: (client: any) => void;
 }
 
-declare const gulpScp: (options: ScpOptions) => NodeJS.ReadWriteStream;
+export { default } from "./gulp-scp";
 
-export default gulpScp;
+export interface ScpOptions {
+  host?: string;
+  port?: number;
+  username?: string;
+  password?: string;
+  privateKey?: string;
+  passphrase?: string;
+  dest: string;
+  watch?: (client: any) => void;
+}

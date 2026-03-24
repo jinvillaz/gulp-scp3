@@ -4,4 +4,6 @@ lib/
 dist/
 *.log
 *.tsbuildinfo
-
+test-gulp-scp3
+.npmrc
+TODO.md
