@@ -95,8 +95,8 @@ export class ScpClient extends EventEmitter {
           (sftp as any).stat(dir, () => resolve()); // ignore errors = doesn't exist
         });
       } catch {
-        // Parent dir
-        const parent = path.dirname(dir);
+        // Parent dir (POSIX for remote SFTP paths)
+        const parent = path.posix.dirname(dir);
         if (parent !== dir) {
           await createDir(parent);
         }

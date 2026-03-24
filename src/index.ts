@@ -1,7 +1,7 @@
 /**
- * TypeScript definitions for gulp-scp3
+ * Main entry point and types
  */
-export interface ScpOptions {
+interface ScpOptions {
   host?: string;
   port?: number;
   username?: string;
@@ -12,15 +12,6 @@ export interface ScpOptions {
   watch?: (client: any) => void;
 }
 
-export { default } from "./gulp-scp";
+import gulpScp from "./gulp-scp";
 
-export interface ScpOptions {
-  host?: string;
-  port?: number;
-  username?: string;
-  password?: string;
-  privateKey?: string;
-  passphrase?: string;
-  dest: string;
-  watch?: (client: any) => void;
-}
+export = gulpScp;

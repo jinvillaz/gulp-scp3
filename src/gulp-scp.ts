@@ -1,4 +1,5 @@
-import { Transform, TransformCallback } from "stream";
+import { Transform } from "stream";
+import type { TransformCallback } from "stream";
 import path from "path";
 import debugFactory from "debug";
 import { ScpClient } from "./client";
@@ -70,11 +71,9 @@ export default function gulpScp(options: ScpOptions): Transform {
           connected = true;
         }
 
-        const dest = path.posix.join(
-          config.dest,
-          path.relative(".", file.relative),
-        );
-        await client.mkdir(path.dirname(dest));
+        const relativePath = file.relative.replace(/\\/g, "/");
+        const dest = path.posix.join(config.dest, relativePath);
+        await client.mkdir(path.posix.dirname(dest));
         await client.write({
           destination: dest,
           content: file.contents as Buffer,
